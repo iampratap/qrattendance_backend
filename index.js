@@ -9,12 +9,13 @@ const {
     adminpass
 } = require('./middleware/admin');
 
-const mysql = require('mysql');
+const mysql = require('mysql2'); //
 const connection = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'attend'
+    user: 'phpmyadmin',
+    password: 'amitlakeri',
+    database: 'attend',
+    insecureAuth : true
 });
 
 connection.connect(err => {
