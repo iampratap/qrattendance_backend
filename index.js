@@ -75,7 +75,7 @@ app.post('/admin/login', (req, res) => {
 });
 
 app.get('/admin/getalladmins', checkAdmin, (req, res) => {
-    const query = `SELECT * FROM admin WHERE is_active = 1`;
+    const query = `SELECT id, role, username, fullname, mobile, email, address, img, is_active FROM admin WHERE is_active = 1`;
     connection.query(query, (err, result) => {
         if (err) {
             console.log(err);
@@ -95,7 +95,7 @@ app.get('/admin/getalladmins', checkAdmin, (req, res) => {
 });
 
 app.post('/admin/addadmin', checkAdmin, (req, res) => {
-    const role = "subadmin";
+    const role = req.body.role;
     const username = req.body.username;
     const password = req.body.password;
     const fullname = req.body.fullname;
